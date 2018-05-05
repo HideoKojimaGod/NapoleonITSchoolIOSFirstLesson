@@ -9,13 +9,13 @@
 import UIKit
 
 struct Product {
-    let imageName   : String
+    let images   : [String]
     let title       : String
     let price       : Float
 }
 
 class ProductViewController: UIViewController {
-    @IBOutlet var mainImageView: UIImageView!
+    @IBOutlet var galleryView: GalleryView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     
@@ -43,7 +43,11 @@ class ProductViewController: UIViewController {
     
     func setupViewController() {
         if product == nil {
-            product = Product(imageName: "image-product", title: "iPhone 6S Rose Gold 64GB почти новый все чеки", price: 18500)
+            product = Product(images: ["https://files.brightside.me/files/news/part_42/426960/18434910-Depositphotos_96023798_xl-2015-1513595556-650-47344d3213-1514622501.jpg",
+                                       "https://files.brightside.me/files/news/part_42/426960/18434910-Depositphotos_96023798_xl-2015-1513595556-650-47344d3213-1514622501.jpg",
+                                       "https://files.brightside.me/files/news/part_42/426960/18434910-Depositphotos_96023798_xl-2015-1513595556-650-47344d3213-1514622501.jpg"],
+                              title: "iPhone 6S Rose Gold 64GB почти новый все чеки",
+                              price: 18500)
         }
     }
 
@@ -54,7 +58,7 @@ class ProductViewController: UIViewController {
         }
         
         title = product.title
-        mainImageView.image = UIImage(named: product.imageName)
+        galleryView.loadUrls(urls: product.images)
         titleLabel.text = product.title
         priceLabel.text = "\(product.price) ₽"
     }
