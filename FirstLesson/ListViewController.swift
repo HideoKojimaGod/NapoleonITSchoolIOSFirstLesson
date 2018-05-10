@@ -23,9 +23,9 @@ class ListViewController: UIViewController {
     
     func setup() {
         products = [
-            Product(imageName: "image-product", title: "Product 0", price: 10000),
-            Product(imageName: "image-product", title: "Product 1", price: 20000),
-            Product(imageName: "image-product", title: "Product 2", price: 30000)
+            Product(images: [], title: "Product 0", price: 10000),
+            Product(images: [], title: "Product 1", price: 20000),
+            Product(images: [], title: "Product 2", price: 30000)
         ]
     }
 
@@ -39,8 +39,13 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProductTableViewCell
+        let product = products[indexPath.row]
 
-        cell?.product = products[indexPath.row]
+//        cell?.iconImageView?.image = UIImage(named: product.imageName)
+        cell?.titleLabel?.text = product.title
+        cell?.priceLabel?.text = "\(product.price) ₽";
+
+
         
         return cell!
     }
