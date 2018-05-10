@@ -14,10 +14,16 @@ class ProductTableViewCell: UITableViewCell {
             guard let unwrappedProduct = product else {
                 return
             }
-            self.iconImageView?.image = UIImage(named: unwrappedProduct.imageName)
-            self.titleLabel?.text = unwrappedProduct.title
-            self.priceLabel?.text = "\(unwrappedProduct.price) ₽";
+            setImage(product: unwrappedProduct)
+            
         }
+    }
+    
+    func setImage(product: Product)
+    {
+//        self.iconImageView?.image = UIImage(named: product.imageName)
+        self.titleLabel?.text = product.title
+        self.priceLabel?.text = "\(product.price) ₽";
     }
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

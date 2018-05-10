@@ -39,11 +39,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ProductTableViewCell
-        let product = products[indexPath.row]
-
-//        cell?.iconImageView?.image = UIImage(named: product.imageName)
-        cell?.titleLabel?.text = product.title
-        cell?.priceLabel?.text = "\(product.price) ₽";
+        cell?.product = products[indexPath.row]
 
 
         
